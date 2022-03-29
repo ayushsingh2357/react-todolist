@@ -1,16 +1,10 @@
-import './App.css';
-import Header from "./components/header.js";
-import { Todos } from "./components/todos.js";
-import { AddTodo } from "./components/addTodo.js";
-// import { Todoitem } from "./components/todoitem.js";
-import { Footer } from './components/footer';
+import React from 'react'
+import { Todos } from "./todos.js";
+import { AddTodo } from "./addTodo.js";
 import React, { useState, useEffect } from 'react';
-import {BrowserRouter as Router,Switch,Route,} from "react-router-dom";
-import { About } from "./components/About.js";
 
-
-function App() {
-  let initTodo;
+export const Home = () => {
+    let initTodo;
   if (localStorage.getItem("todos") === null) {
     initTodo = [];
   }
@@ -49,33 +43,6 @@ function App() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
   return (
-    <>
-      <Router>
-        <Header title="My To Do List" searchbar={false} />
-
-        <Switch>
-          <Route exact path="/index.html" render={() => {
-            return(
-            <>
-              <AddTodo addtodo={addtodo} />
-              <Todos todos={todos} onDelete={onDelete} />
-            </>
-            )
-          }} >
-          </Route>
-          <Route exact path="/about">
-            <About/>
-          </Route>
-        </Switch>
-
-
-        {/* <Todoitem /> */}
-
-        <Footer />
-      </Router>
-
-    </>
-  );
+    
+  )
 }
-
-export default App;
