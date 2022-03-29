@@ -1,19 +1,20 @@
 import './App.css';
 import Header from "./components/header.js";
 import { Todos } from "./components/todos.js";
+import { AddTodo } from "./components/addTodo.js";
 // import { Todoitem } from "./components/todoitem.js";
 import { Footer } from './components/footer';
 import React, { useState } from 'react';
 
 
 function App() {
-  const onDelete = (todo)=>{
-    console.log("I am ondelete of todo ",todo);
+  const onDelete = (todo) => {
+    console.log("I am ondelete of todo ", todo);
     // deleting this way in react does not work
     // let index = todos.indexOf(todo);
     // todos.splice(index,1);
-    setTodos(todos.filter((e)=>{
-      return e!==todo;
+    setTodos(todos.filter((e) => {
+      return e !== todo;
     }))
 
   }
@@ -36,8 +37,11 @@ function App() {
   return (
     <>
       <Header title="My To Do List" searchbar={true} />
+      <AddTodo />
       <Todos todos={todos} onDelete={onDelete} />
+
       {/* <Todoitem /> */}
+
       <Footer />
 
     </>
